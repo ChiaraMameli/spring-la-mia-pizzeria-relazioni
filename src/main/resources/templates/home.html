@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
+    <script src="https://kit.fontawesome.com/3395c408c6.js" crossorigin="anonymous"></script>
+    <title>La mia pizzeria</title>
+</head>
+<body  style="padding-top: 50px;">
+	<div class="container">
+	<div class="d-flex justify-content-between">
+		<div><a href="/pizza/search" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i> Search your pizza</a></div>
+		<h1 class="text-center pb-3">Pizzeria</h1>
+		<div><a href="/drink/search" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i> Search your drink</a></div>
+	</div>
+	<div class="d-flex justify-content-between">
+		<div class="flex-grow-1">
+			<div class="d-flex justify-content-between">
+				<h2>My pizzas</h2>
+				<div>
+					<a 
+					href="/pizza/create" type="button" 
+					class="btn btn-primary"
+					>
+					<i class="fa-solid fa-plus"></i> 
+					Create new Pizza
+					</a>
+				</div>
+			</div>
+				<table class="table table-hover">
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Price</th>
+							<th scope="col">Actions</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr th:each="pizza : ${pizza}" th:object="${pizza}">
+							<td th:text="*{name}"></td>
+							<td th:text="*{description}"></td>
+							<td th:text="*{formattedPrice()}"></td>
+							<td>
+								<a th:href="@{/pizza/{id} (id=*{id})}" type="button" class="btn btn-success btn-small">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								<a th:href="@{/pizza/update/{id} (id=*{id})}" type="button" class="btn btn-warning btn-small">
+									<i class="fa-solid fa-pencil"></i>
+								</a>
+								
+								<a th:href="@{/pizza/delete/{id} (id=*{id})}" type="button" class="btn btn-danger btn-small">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						  </tr>
+						</tbody>
+					  </table>
+				</table>
+		</div>
+		<div class="col-1"></div>
+		<div class="flex-grow-1">
+			<div class="d-flex justify-content-between">
+				<h2>My drinks</h2>
+				<div>
+					<a 
+					href="/drink/create" type="button" 
+					class="btn btn-primary btn-block"
+					>
+					<i class="fa-solid fa-plus"></i> 
+					Create new Drink
+					</a>
+				</div>
+			</div>
+				<table class="table table-hover">
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Price</th>
+							<th scope="col">Actions</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr th:each="drink : ${drinks}" th:object="${drink}">
+							<td th:text="*{name}"></td>
+							<td th:text="*{description}"></td>
+							<td th:text="*{formattedPrice()}"></td>
+							<td>
+								<a th:href="@{/drink/{id} (id=*{id})}" type="button" class="btn btn-success btn-small">
+									<i class="fa-solid fa-eye"></i>
+								</a>
+								<a th:href="@{/drink/update/{id} (id=*{id})}" type="button" class="btn btn-warning btn-small">
+									<i class="fa-solid fa-pencil"></i>
+								</a>
+								
+								<a th:href="@{/drink/delete/{id} (id=*{id})}" type="button" class="btn btn-danger btn-small">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						  </tr>
+						</tbody>
+					  </table>
+				</table>
+		</div>
+	</div>
+</body>
+</html>
