@@ -23,11 +23,9 @@ public class Promotion {
 	private int id;
 	
 	@NotNull(message = "StartDate field cannot be null")
-	@NotEmpty(message = "StartDate field cannot be empty")
 	private LocalDate startDate;
 	
 	@NotNull(message = "EndDate field cannot be null")
-	@NotEmpty(message = "EndDate field cannot be empty")
 	private LocalDate endDate;
 	
 	@Column(unique = true)

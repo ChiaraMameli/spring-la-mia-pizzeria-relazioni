@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,13 +32,17 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Pizza pizza1 = new Pizza("Margherita", "Buonissima" , 600);
-		Pizza pizza2 = new Pizza("Napoli", "Buonissima" , 450);
-		Pizza pizza3 = new Pizza("Nutella", "Buonissima" , 700);
+		Promotion promotion1 = new Promotion(LocalDate.parse("2022-12-12"), LocalDate.parse("2023-12-01"), "Buy 3 pay 2");
+		Promotion promotion2 = new Promotion(LocalDate.parse("2022-12-12"), LocalDate.parse("2023-12-02"), "Buy 2 pay 1");
+		promotionService.save(promotion2);
+		promotionService.save(promotion1);
+		
+		Pizza pizza1 = new Pizza("Margherita", "Buonissima" , 600, promotion1);
+		Pizza pizza2 = new Pizza("Napoli", "Buonissima" , 450, promotion2);
+		Pizza pizza3 = new Pizza("Nutella", "Buonissima" , 700, promotion1);
 		Drink drink1 = new Drink("Coca Cola", "Freschissima", 250);
 		Drink drink2 = new Drink("Ichnusa", "Freschissima", 300);
 		Drink drink3 = new Drink("Acqua", "Freschissima", 100);
-		Promotion promotion1 = new Promotion(LocalDate.now(), LocalDate.now(), "pippo");
 		
 		pizzaService.save(pizza1);
 		pizzaService.save(pizza2);
@@ -47,7 +52,30 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		drinkService.save(drink2);
 		drinkService.save(drink3);
 		
-		promotionService.save(promotion1);
+		System.err.println("----------TEST-------------");
+		
+		System.out.println("----------FIND ALL-------------");
+		System.out.println(promotionService.findAll());
+		
+		System.out.println("----------DELETE-------------");
+		promotionService.deleteById(1);
+		
+		System.out.println("----------FIND ALL AFTER DELETE-------------");
+		System.out.println(promotionService.findAll());
+		
+		System.out.println("----------FIND ALL PIZZA-------------");
+		List<Promotion> promotions = promotionService.findAllPizza();
+		
+		for (Promotion promotion : promotions) {
+			
+			System.err.println(promotion);
+			
+			for (Pizza pizza : promotion.getPizza()) {
+				
+				System.err.println("\t" + pizza);
+			}
+		}
+
 	}
 
 }

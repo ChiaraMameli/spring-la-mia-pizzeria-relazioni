@@ -32,14 +32,15 @@ public class Pizza {
 	private int price;
 
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(name="promotion_id", nullable = false)
 	private Promotion promotion;
 
 	public Pizza() {}
-	public Pizza(String name, String description, int price) {
+	public Pizza(String name, String description, int price, Promotion promotion) {
 		setName(name);
 		setDescription(description);
 		setPrice(price);
+		setPromotion(promotion);
 	}
 	
 	public int getId() {
