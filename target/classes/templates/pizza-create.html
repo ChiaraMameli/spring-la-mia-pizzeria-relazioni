@@ -38,6 +38,19 @@
                 <input type="text" class="form-control" id="price" name="price" th:field="*{price}">
             </div>            
             
+            <h3 class="pt-3 pb-1">Promotions</h3>
+            <select name="promotion" class="mb-3">
+                <option th:value="null" th:field="${pizza.promotion}">-</option>
+                <option
+                    th:each="promotion : ${promotions}"
+                    th:object="${promotion}"
+                    th:value="*{id}"
+                    th:field="${pizza.promotion}"
+                    th:text="*{title}"
+                >
+                </option>
+            </select>
+
 	         <div class="d-flex justify-content-between">
 		        <button type="submit" class="btn btn-primary" value="CREATE">Save</button>
 			    <a href="/" class="btn btn-secondary">Back</a>

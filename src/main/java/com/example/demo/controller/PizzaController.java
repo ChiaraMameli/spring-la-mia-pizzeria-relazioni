@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.pojo.Pizza;
+import com.example.demo.pojo.Promotion;
 import com.example.demo.serv.PizzaService;
+import com.example.demo.serv.PromotionService;
 
 import jakarta.validation.Valid;
 
@@ -26,6 +28,8 @@ public class PizzaController {
 
 	@Autowired
 	private PizzaService pizzaService;
+	@Autowired
+	private PromotionService promotionService;
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable("id") int id, Model model) {
@@ -41,7 +45,9 @@ public class PizzaController {
 	@GetMapping("/create")
 	public String createPizza(Model model) {
 		Pizza pizza = new Pizza();
+		List<Promotion> promotions = promotionService.findAll();
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("promotions", promotions);
 		return "pizza-create";
 	}
 	
