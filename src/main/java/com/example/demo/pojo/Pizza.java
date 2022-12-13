@@ -1,11 +1,14 @@
 package com.example.demo.pojo;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
@@ -34,6 +37,9 @@ public class Pizza {
 	@ManyToOne
 	@JoinColumn(name="promotion_id", nullable = false)
 	private Promotion promotion;
+	
+	@ManyToMany
+	private List<Ingredient> ingredients;
 
 	public Pizza() {}
 	public Pizza(String name, String description, int price, Promotion promotion) {
@@ -42,6 +48,11 @@ public class Pizza {
 		setPrice(price);
 		setPromotion(promotion);
 	}
+	public Pizza(String name, String description, int price, Promotion promotion, List<Ingredient> ingredients) {
+		this(name, description, price, promotion);
+		setIngredients(ingredients);
+	}
+	
 	
 	public int getId() {
 		return id;
@@ -76,6 +87,13 @@ public class Pizza {
 	}
 	public void setPromotion(Promotion promotion) {
 		this.promotion = promotion;
+	}
+		
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 	
 	

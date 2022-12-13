@@ -2,12 +2,16 @@
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/serv/PromotionService.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/repo/PromotionRepo.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/controller/MainController.java
+/Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/serv/IngredientService.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/serv/PizzaService.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/pojo/Pizza.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/serv/DrinkService.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/repo/DrinkRepo.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/repo/PizzaRepo.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/SpringLaMiaPizzeriaCrudApplication.java
+/Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/controller/PromotionController.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/controller/PizzaController.java
+/Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/pojo/Ingredient.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/controller/DrinkController.java
 /Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/pojo/Promotion.java
+/Users/chiaramameli/Desktop/java/spring-la-mia-pizzeria-crud/src/main/java/com/example/demo/repo/IngredientRepo.java

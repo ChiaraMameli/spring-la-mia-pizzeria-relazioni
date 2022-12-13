@@ -40,7 +40,7 @@
             
             <h3 class="pt-3 pb-1">Promotions</h3>
             <select name="promotion" class="mb-3">
-                <option th:value="null" th:field="${pizza.promotion}">-</option>
+                <option th:value="null" th:field="${pizza.promotion}" required>Choose your promotion</option>
                 <option
                     th:each="promotion : ${promotions}"
                     th:object="${promotion}"
