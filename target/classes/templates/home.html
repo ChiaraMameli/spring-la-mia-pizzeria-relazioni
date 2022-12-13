@@ -108,5 +108,41 @@
 				</table>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-4"></div>
+		<div class="col-4">
+			<div class="d-flex justify-content-between">
+				<h2>My promotions</h2>
+				<div>
+					<a 
+					href="/promotion/create" type="button" 
+					class="btn btn-primary btn-block"
+					>
+					<i class="fa-solid fa-plus"></i> 
+					Create new Promotion
+					</a>
+				</div>
+			</div>
+				<table class="table table-hover">
+					<table class="table">
+						<thead>
+						  <tr>
+							<th scope="col">Title</th>
+							<th scope="col">Start Date</th>
+							<th scope="col">End Date</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr th:each="promotion : ${promotions}" th:object="${promotion}">
+							<td th:text="*{title}"></td>
+							<td th:text="*{startDate}"></td>
+							<td th:text="*{endDate}"></td>
+						  </tr>
+						</tbody>
+					  </table>
+				</table>
+		</div>
+
+	</div>
 </body>
 </html>

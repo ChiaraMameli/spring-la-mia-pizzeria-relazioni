@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.pojo.Drink;
 import com.example.demo.pojo.Pizza;
+import com.example.demo.pojo.Promotion;
 import com.example.demo.serv.DrinkService;
 import com.example.demo.serv.PizzaService;
+import com.example.demo.serv.PromotionService;
 
 @Controller
 public class MainController {
@@ -18,6 +20,8 @@ public class MainController {
 	private PizzaService pizzaService;
 	@Autowired
 	private DrinkService drinkService;
+	@Autowired
+	private PromotionService promotionService;
 	
 	@GetMapping("/")
 	public String getHome(Model model) {
@@ -26,6 +30,9 @@ public class MainController {
 		
 		List<Drink> drinks = drinkService.findAll();
 		model.addAttribute("drinks", drinks);
+		
+		List<Promotion> promotions = promotionService.findAll();
+		model.addAttribute("promotions", promotions);
 		
 		return "home";
 	}

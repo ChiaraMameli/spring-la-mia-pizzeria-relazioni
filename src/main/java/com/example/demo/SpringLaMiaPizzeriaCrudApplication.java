@@ -52,29 +52,29 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		drinkService.save(drink2);
 		drinkService.save(drink3);
 		
-		System.err.println("----------TEST-------------");
-		
-		System.out.println("----------FIND ALL-------------");
-		System.out.println(promotionService.findAll());
-		
-		System.out.println("----------DELETE-------------");
-		promotionService.deleteById(1);
-		
-		System.out.println("----------FIND ALL AFTER DELETE-------------");
-		System.out.println(promotionService.findAll());
-		
-		System.out.println("----------FIND ALL PIZZA-------------");
-		List<Promotion> promotions = promotionService.findAllPizza();
-		
-		for (Promotion promotion : promotions) {
-			
-			System.err.println(promotion);
-			
-			for (Pizza pizza : promotion.getPizza()) {
-				
-				System.err.println("\t" + pizza);
-			}
-		}
+//		System.err.println("----------TEST-------------");
+//		
+//		System.out.println("----------FIND ALL-------------");
+//		System.out.println(promotionService.findAll());
+//		
+//		System.out.println("----------DELETE-------------");
+//		promotionService.deleteById(1);
+//		
+//		System.out.println("----------FIND ALL AFTER DELETE-------------");
+//		System.out.println(promotionService.findAll());
+//		
+//		System.out.println("----------FIND ALL PIZZA-------------");
+//		List<Promotion> promotions = promotionService.findAllPizza();
+//		
+//		for (Promotion promotion : promotions) {
+//			
+//			System.err.println(promotion);
+//			
+//			for (Pizza pizza : promotion.getPizza()) {
+//				
+//				System.err.println("\t" + pizza);
+//			}
+//		}
 
 	}
 
