@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,9 +40,7 @@ public class IngredientController {
 	@GetMapping("/{id}")
 	public String show(@PathVariable("id") int id, Model model) {
 		
-		Optional<Ingredient> optIngredient = ingredientService.getIngredientById(id);
-		
-		Ingredient ingredient = optIngredient.get();		
+		Ingredient ingredient = ingredientService.getById(id);	
 		model.addAttribute("ingredient", ingredient);
 		
 		return "ingredient-show";		
@@ -74,35 +71,37 @@ public class IngredientController {
 	@GetMapping("/update/{id}")
 	public String editIngredient(@PathVariable("id") int id, Model model) {
 		
-		Ingredient ingredients = ingredientService.getIngredientById(id).get();
-		List<Pizza> pizzas = pizzaService.findAll();
+		Ingredient ingredients = ingredientService.getById(id);
 		model.addAttribute("ingredient", ingredients);
-		model.addAttribute("pizzas", pizzas);
 		
+		List<Pizza> pizzas = pizzaService.findAll();
+		model.addAttribute("pizzas", pizzas);
+	
 		return "ingredient-update";
 	}
 	
-	@PostMapping("/update")
-	public String updateIngredient(@Valid Ingredient ingredient) {
+	@PostMapping("/update/{id}")
+	public String updateIngredient(@PathVariable("id") int id, @Valid Ingredient ingredient) {
 		
-		List<Pizza> PizzasIngredient = ingredient.getPizzas();
+		Ingredient oldIngredient = ingredientService.getById(id);
 		
-		for (Pizza pizza : PizzasIngredient)
+		for (Pizza pizza : oldIngredient.getPizzas()) 
+			pizza.getIngredients().remove(ingredient);
+		
+		for (Pizza pizza : ingredient.getPizzas())			
 			pizza.getIngredients().add(ingredient);
+		
 		ingredientService.save(ingredient);
 		
-		return "redirect:/";
+		return "redirect:/ingredient";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String deleteIngredient(@PathVariable("id") int id) {
+
+		ingredientService.delete(id);
 		
-		Optional<Ingredient> optIngredient = ingredientService.getIngredientById(id);
-		Ingredient ingredient  = optIngredient.get();
-		
-		ingredientService.delete(ingredient);
-		
-		return "redirect:/";
+		return "redirect:/ingredient";
 	}
 	
 }

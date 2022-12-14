@@ -75,9 +75,11 @@ public class PizzaController {
 	public String editPizza(@PathVariable("id") int id, Model model) {
 		
 		Optional<Pizza> optPizza = pizzaService.getPizzaById(id);
+		List<Ingredient> ingredients = ingredientService.findAll();
 		
 		Pizza pizza = optPizza.get();		
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("ingredients", ingredients);
 		
 		return "pizza-update";
 	}
@@ -89,7 +91,7 @@ public class PizzaController {
 			
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 			
-			return "redirect:/pizza/create";
+			return "redirect:/";
 			}
 			
 		pizzaService.save(pizza);

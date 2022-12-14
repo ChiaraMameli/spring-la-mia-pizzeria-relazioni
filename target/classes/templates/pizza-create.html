@@ -51,20 +51,22 @@
                 </option>
             </select>
             
-            					<label>Ingredienti</label><br>
-                    <div
-                        th:each="ingredient : ${ingredients}"
-                        th:object="${ingredient}"
-                        class="mb-3"
-                    >
-                        <input 
-                            type="checkbox" 
-                            name="ingredients" 
-                            
-                            th:value="*{id}" 
-                            th:field="${pizza.ingredients}">
-                        <label>[[*{name}]]</label>
-                    </div>
+            <h3 class="pt-3 pt-3 pb-1">Ingredients</h3>
+            <div
+                th:each="ingredient : ${ingredients}"
+                th:object="${ingredient}"
+                class="mb-3"
+            >
+                <input 
+                    type="checkbox" 
+                    name="ingredients" 
+                    
+                    th:value="*{id}" 
+                    th:field="${pizza.ingredients}">
+                <label
+                th:text="*{name}">
+            </label>
+            </div>
             
 
 	         <div class="d-flex justify-content-between">
