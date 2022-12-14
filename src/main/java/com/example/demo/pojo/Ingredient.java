@@ -2,6 +2,7 @@ package com.example.demo.pojo;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Ingredient {
 	private int id;
 	
 	@NotNull(message = "Name field cannot be null")
+	@Column(unique = true)
 	private String name;
 	
 	@ManyToMany(mappedBy = "ingredients")

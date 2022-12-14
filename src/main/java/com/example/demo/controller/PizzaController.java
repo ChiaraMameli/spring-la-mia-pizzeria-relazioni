@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.pojo.Ingredient;
 import com.example.demo.pojo.Pizza;
 import com.example.demo.pojo.Promotion;
+import com.example.demo.serv.IngredientService;
 import com.example.demo.serv.PizzaService;
 import com.example.demo.serv.PromotionService;
 
@@ -30,6 +32,8 @@ public class PizzaController {
 	private PizzaService pizzaService;
 	@Autowired
 	private PromotionService promotionService;
+	@Autowired
+	private IngredientService ingredientService;
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable("id") int id, Model model) {
@@ -46,8 +50,10 @@ public class PizzaController {
 	public String createPizza(Model model) {
 		Pizza pizza = new Pizza();
 		List<Promotion> promotions = promotionService.findAll();
+		List<Ingredient> ingredients = ingredientService.findAll();
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("promotions", promotions);
+		model.addAttribute("ingredients", ingredients);
 		return "pizza-create";
 	}
 	

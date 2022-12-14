@@ -3,11 +3,16 @@ package com.example.demo.serv;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.pojo.Ingredient;
 import com.example.demo.repo.IngredientRepo;
 
+import jakarta.transaction.Transactional;
+
+@Service
 public class IngredientService {
 	
 	@Autowired
@@ -21,11 +26,24 @@ public class IngredientService {
 		return ingredientRepo.findAll();
 	}
 
-	public Optional<Ingredient> getPizzaById(int id) {
+	public Optional<Ingredient> getIngredientById(int id) {
 		return ingredientRepo.findById(id);
 	}
 
-	public void delete(int id) {
-		ingredientRepo.deleteById(id);
+	public void delete(Ingredient ingredient) {
+		ingredientRepo.delete(ingredient);
 	}
+	
+	@Transactional
+	public List<Ingredient> findAllWPizza() {
+		List<Ingredient> ingredients = ingredientRepo.findAll();
+		
+		for (Ingredient ingredient : ingredients) {
+			Hibernate.initialize(ingredient.getPizzas());
+		}
+		
+		return ingredients;
+		
+	}
+
 }

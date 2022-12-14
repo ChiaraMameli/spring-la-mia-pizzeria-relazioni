@@ -105,9 +105,7 @@ public class Pizza {
 	
 	@Override
 	public String toString() {
-		return "- " + getName()
-				+ "( " + getPrice() + "€) - "
-				+ getDescription();
+		return getName();
 	}
 	
 }

@@ -73,7 +73,7 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 //		System.out.println(promotionService.findAll());
 //		
 //		System.out.println("----------DELETE-------------");
-//		promotionService.deleteById(1);
+//		ingredientService.delete(1);
 //		
 //		System.out.println("----------FIND ALL AFTER DELETE-------------");
 //		System.out.println(promotionService.findAll());
@@ -91,6 +91,18 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 //			}
 //		}
 //
+//		System.err.println("-------WINGREDIENTS-------");
+//		List<Pizza> pizzas = pizzaService.findAllWIngredient();
+//		for (Pizza pizza : pizzas) {
+//			System.err.println(pizza + "\n\t" + pizza.getIngredients());
+//		}
+//		
+//		System.err.println("-------WPIZZA-------");
+//		List<Ingredient> ingredients = ingredientService.findAllWPizza();
+//		for (Ingredient ingredient : ingredients) {
+//			System.err.println(ingredient +  "\n\t" + ingredient.getPizzas());
+//		}
+
 	}
 
 }
